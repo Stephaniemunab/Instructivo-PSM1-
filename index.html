@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografía Interactiva: Tips PSM I</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #1e293b;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #475569;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- Header / Hero Section -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="p-2.5 bg-blue-600/10 text-blue-400 rounded-xl border border-blue-500/30 shadow-lg shadow-blue-500/5">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-blue-400 bg-clip-text text-transparent">
+            PSM I • Cheat Sheet Definitivo
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-400 font-medium">Sincronizado con la Guía de Scrum 2020 • Motor de Estudio Offline Integrado</p>
+        </div>
+      </div>
+      <!-- Vista Toggle / Navegación -->
+      <div class="flex bg-slate-950 p-1 rounded-xl border border-slate-800 self-start md:self-auto overflow-x-auto">
+        <button id="btn-infografia" onclick="switchView('infografia')" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all bg-blue-600 text-white shadow-md shadow-blue-900/30 whitespace-nowrap">
+          🔍 Infografía & Lista
+        </button>
+        <button id="btn-flashcards" onclick="switchView('flashcards')" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all text-slate-400 hover:text-slate-200 whitespace-nowrap">
+          ⚡ Modo Flashcard
+        </button>
+        <button id="btn-asistente" onclick="switchView('asistente')" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all text-slate-400 hover:text-slate-200 whitespace-nowrap flex items-center gap-1">
+          ✨ Asistente AI (Offline/Online)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 w-full">
+    
+    <!-- STATS & RESUMEN RÁPIDO -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-gradient-to-br from-slate-900 to-slate-900/50 p-4 rounded-2xl border border-slate-800 flex items-center space-x-3.5">
+        <div class="p-3 bg-rose-500/10 text-rose-400 rounded-xl border border-rose-500/20">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold tracking-tight text-white">6</span>
+          <span class="block text-xs text-slate-400 uppercase font-bold tracking-wider">Puntos de Atención Examen</span>
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-slate-900 to-slate-900/50 p-4 rounded-2xl border border-slate-800 flex items-center space-x-3.5">
+        <div class="p-3 bg-blue-500/10 text-blue-400 rounded-xl border border-blue-500/20">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold tracking-tight text-white">12</span>
+          <span class="block text-xs text-slate-400 uppercase font-bold tracking-wider">Reglas de Oro Oficiales</span>
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-slate-900 to-slate-900/50 p-4 rounded-2xl border border-slate-800 flex items-center space-x-3.5">
+        <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold tracking-tight text-white">44</span>
+          <span class="block text-xs text-slate-400 uppercase font-bold tracking-wider">Casos de Preguntas</span>
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-slate-900 to-slate-900/50 p-4 rounded-2xl border border-slate-800 flex items-center space-x-3.5">
+        <div class="p-3 bg-purple-500/10 text-purple-400 rounded-xl border border-purple-500/20">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold tracking-tight text-white">100%</span>
+          <span class="block text-xs text-slate-400 uppercase font-bold tracking-wider">Funcional Offline</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE INFOGRAFÍA Y TABLA DE CONTENIDOS -->
+    <div id="view-infografia" class="space-y-8">
+      
+      <!-- LAS 12 REGLAS DE ORO -->
+      <section class="bg-gradient-to-br from-slate-900 to-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl -z-10"></div>
+
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="p-2 bg-yellow-500/15 text-yellow-400 rounded-lg">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Las 12 Reglas de Oro Más Rentables para Memorizar</h2>
+            <p class="text-xs sm:text-sm text-slate-400">Si dominas estas reglas básicas basadas en tu examen, descartas de inmediato el 80% de distractores del PSM I.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 1</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Product Owner</p>
+            <p class="text-xs text-slate-400 mt-1">Dueño único y absoluto del Product Backlog.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 2</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Developers</p>
+            <p class="text-xs text-slate-400 mt-1">Gestionan por completo el Sprint y su progreso.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 3</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Scrum Master</p>
+            <p class="text-xs text-slate-400 mt-1">Enseña, remueve impedimentos, NO lidera autocráticamente.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 4</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">1 Producto = 1 Backlog</p>
+            <p class="text-xs text-slate-400 mt-1">Un único Product Backlog, sin importar cuántos equipos trabajen.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 5</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Sprint Goal Estable</p>
+            <p class="text-xs text-slate-400 mt-1">Un único objetivo por Sprint. Nunca cambia durante el Sprint.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 6</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Sprint Backlog Flexible</p>
+            <p class="text-xs text-slate-400 mt-1">Los Developers lo adaptan si aprenden cosas nuevas.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 7</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Scrum es un Framework</p>
+            <p class="text-xs text-slate-400 mt-1">Nunca una metodología o proceso rígido de software.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 8</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Done ≠ Released</p>
+            <p class="text-xs text-slate-400 mt-1">Listo para liberarse; la decisión de lanzar es del PO.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 9</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">DoD Común</p>
+            <p class="text-xs text-slate-400 mt-1">Si hay varios equipos en un producto, la DoD debe ser compartida.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 10</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Rol de Dirección</p>
+            <p class="text-xs text-slate-400 mt-1">Externo a Scrum. Apoya al SM y PO, no supervisa el Sprint.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 11</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Sin Propiedad Individual</p>
+            <p class="text-xs text-slate-400 mt-1">Nadie tiene propiedad exclusiva de un elemento del Backlog.</p>
+          </div>
+          <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition duration-300">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Regla 12</span>
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138z"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Timebox Inviolable</p>
+            <p class="text-xs text-slate-400 mt-1">Un Sprint nunca se extiende bajo ninguna circunstancia.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CORRECCIONES DE ALTA PRIORIDAD -->
+      <section class="bg-gradient-to-br from-red-950/40 via-slate-950 to-slate-950 p-6 sm:p-8 rounded-3xl border border-red-500/30">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="p-2 bg-red-500/20 text-red-400 rounded-lg animate-pulse">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Análisis de Errores Críticos (De tu Intento Real de Examen)</h2>
+            <p class="text-xs sm:text-sm text-red-300">En base al archivo cargado con tu examen, presta atención especial a estas dos preguntas que fallaste:</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-slate-900/80 p-5 rounded-2xl border border-red-500/20">
+            <span class="text-xs font-bold text-red-400 bg-red-500/10 px-2.5 py-1 rounded-full uppercase tracking-wider">Fallo del Intento #1</span>
+            <h3 class="text-md font-semibold text-white mt-3">La Dirección/Gerencia (Management) en Scrum</h3>
+            <p class="text-sm text-slate-300 mt-2">¿Cuál es su rol real? Ellos no supervisan ni intervienen directamente en los Sprints ni en las tareas del equipo.</p>
+            <div class="mt-4 flex items-center space-x-3 bg-red-500/10 p-3 rounded-lg border border-red-500/20 text-xs text-red-300">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span><strong>Respuesta Correcta:</strong> Deben brindar soporte externo al PO con perspectivas y al SM fomentando que la organización adopte el empirismo y la autogestión.</span>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/80 p-5 rounded-2xl border border-red-500/20">
+            <span class="text-xs font-bold text-red-400 bg-red-500/10 px-2.5 py-1 rounded-full uppercase tracking-wider">Fallo del Intento #2</span>
+            <h3 class="text-md font-semibold text-white mt-3">Definición de Hecho (DoD) con Múltiples Equipos</h3>
+            <p class="text-sm text-slate-300 mt-2">¿Qué pasa si hay 3 equipos Scrum trabajando en el mismo producto? ¿Cada uno crea su propia DoD?</p>
+            <div class="mt-4 flex items-center space-x-3 bg-green-500/10 p-3 rounded-lg border border-green-500/20 text-xs text-green-300">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span><strong>Respuesta Correcta:</strong> Todos los equipos deben unirse y acordar una definición común única para asegurar la compatibilidad del incremento.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BUSCADOR & FILTROS DE TIPS -->
+      <section class="space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold text-white">Explorador de Preguntas y Tips PSM I</h2>
+            <p class="text-xs sm:text-sm text-slate-400">Busca palabras clave (como "CEO", "DoD", "Gerencia", "Extender") para resolver tus dudas de inmediato.</p>
+          </div>
+          <!-- Buscador -->
+          <div class="relative w-full md:w-80">
+            <input type="text" id="tip-search" oninput="filterTips()" placeholder="Buscar tip o pregunta..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors">
+            <span class="absolute right-3 top-3 text-slate-500">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Filtros por categorías -->
+        <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-800">
+          <button onclick="setCategoryFilter('all')" class="category-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 text-white transition-all">Todos los Tips</button>
+          <button onclick="setCategoryFilter('roles')" class="category-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-all">Roles y Responsabilidades</button>
+          <button onclick="setCategoryFilter('eventos')" class="category-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-all">Eventos y Tiempos</button>
+          <button onclick="setCategoryFilter('artefactos')" class="category-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-all">Artefactos y "Done"</button>
+          <button onclick="setCategoryFilter('reglas')" class="category-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-all">Reglas de Sprints</button>
+        </div>
+
+        <!-- Contenedor Dinámico de Cards de Tips -->
+        <div id="tips-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Las tarjetas se generan dinámicamente con JavaScript -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SECCIÓN INTERACTIVA: MODO FLASHCARD -->
+    <div id="view-flashcards" class="hidden space-y-8 max-w-2xl mx-auto">
+      
+      <div class="text-center space-y-2">
+        <h2 class="text-2xl font-bold text-white">⚡ Entrenador de Memoria Flashcard</h2>
+        <p class="text-sm text-slate-400">Lee la pregunta típica del examen, piensa tu respuesta y haz clic para revelar el tip clave.</p>
+      </div>
+
+      <!-- Tarjeta Flashcard -->
+      <div class="perspective-1000 w-full h-[320px] cursor-pointer" onclick="flipFlashcard()">
+        <div id="flashcard-inner" class="relative w-full h-full duration-500 transform-style-3d shadow-2xl rounded-3xl border border-slate-800 bg-slate-900">
+          
+          <!-- Lado Frontal (Pregunta) -->
+          <div class="absolute inset-0 w-full h-full p-8 flex flex-col justify-between backface-hidden bg-slate-900 rounded-3xl">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full uppercase tracking-wider">Pregunta de Examen</span>
+              <span id="flashcard-index" class="text-xs text-slate-500 font-semibold">1 / 44</span>
+            </div>
+            <div class="my-auto text-center">
+              <h3 id="flashcard-question" class="text-lg sm:text-xl font-bold text-white leading-relaxed">
+                ¿Quién gestiona el progreso del trabajo durante un Sprint?
+              </h3>
+            </div>
+            <div class="text-center text-xs text-slate-500 font-medium animate-pulse">
+              Haz clic en cualquier parte de la tarjeta para girar 🔄
+            </div>
+          </div>
+
+          <!-- Lado Posterior (Tip PSM I) -->
+          <div class="absolute inset-0 w-full h-full p-8 flex flex-col justify-between backface-hidden rotate-y-180 bg-slate-900/95 border-2 border-emerald-500/40 rounded-3xl">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full uppercase tracking-wider">Tip PSM I Correcto</span>
+              <span class="text-xs text-emerald-400 font-semibold">✓ Memorizar</span>
+            </div>
+            <div class="my-auto text-center px-2">
+              <div id="flashcard-answer" class="text-base sm:text-lg font-semibold text-emerald-300 leading-relaxed space-y-2">
+                <!-- Se inyecta la respuesta -->
+              </div>
+            </div>
+            <div class="text-center text-xs text-slate-400 font-medium">
+              Haz clic para volver a ver la pregunta
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Controles de Navegación -->
+      <div class="flex items-center justify-between gap-4">
+        <button onclick="prevFlashcard(event)" class="px-5 py-3 bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold rounded-xl border border-slate-800 transition-all flex items-center space-x-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span>Anterior</span>
+        </button>
+        <button onclick="shuffleFlashcards(event)" class="p-3 bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 rounded-xl border border-slate-800 transition-all" title="Mezclar tarjetas">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17"/></svg>
+        </button>
+        <button onclick="nextFlashcard(event)" class="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-900/30 transition-all flex items-center space-x-2">
+          <span>Siguiente</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN INTERACTIVA: ASISTENTE AI CON MOTOR DUAL (OFFLINE LOCAL + GEMINI OPCIONAL) -->
+    <div id="view-asistente" class="hidden space-y-8">
+      
+      <div class="bg-gradient-to-br from-indigo-950/40 via-slate-900 to-slate-950 p-6 sm:p-8 rounded-3xl border border-blue-500/20 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="p-2.5 bg-blue-500/20 text-blue-300 rounded-xl border border-blue-500/30">
+            <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">✨ Asistente de Examen Scrum AI</h2>
+            <p class="text-xs sm:text-sm text-slate-300">Motor inteligente offline integrado (Funciona al 100% sin clave de API).</p>
+          </div>
+        </div>
+
+        <!-- Estado de Conexión & Opción API Key -->
+        <div class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div class="flex items-center space-x-2 text-xs">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+            <span class="font-semibold text-emerald-400">Modo Offline Activo:</span>
+            <span class="text-slate-400">El analizador responderá al instante usando el motor local de Scrum 2020.</span>
+          </div>
+          
+          <div class="w-full sm:w-auto flex items-center gap-2">
+            <input type="password" id="api-key-input" placeholder="API Key opcional (ej. AIzaSy...)" class="w-full sm:w-64 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500">
+            <button onclick="saveApiKey()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 whitespace-nowrap">
+              Guardar Key
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid de Herramientas AI -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Herramienta 1: Analizador de Preguntas externas -->
+          <div class="bg-slate-950/60 p-5 sm:p-6 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-md font-bold text-slate-100 flex items-center gap-1.5">
+                <span>🔍 Analizador de Preguntas Externas</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-1">¿Tienes una pregunta dudosa de otro simulador o del Open Assessment? Pégala abajo y deja que el motor la deconstruya científicamente.</p>
+              
+              <div class="mt-4">
+                <textarea id="ai-question-input" rows="4" placeholder="Escribe o pega aquí la pregunta de examen..." class="w-full bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"></textarea>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <button onclick="analyzeQuestionWithAI()" class="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-lg shadow-blue-900/40 flex items-center justify-center gap-2">
+                <span>Analizar Pregunta ✨</span>
+              </button>
+              <button onclick="clearAnalyzer()" class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-400 text-xs sm:text-sm font-semibold rounded-xl border border-slate-800 transition-all">
+                Limpiar
+              </button>
+            </div>
+          </div>
+
+          <!-- Herramienta 2: Generador de Preguntas de Práctica de la AI -->
+          <div class="bg-slate-950/60 p-5 sm:p-6 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-md font-bold text-slate-100 flex items-center gap-1.5">
+                <span>📝 Generador de Casos Prácticos AI</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-1">Genera un reto de opción múltiple con casos complejos y trampas del examen real.</p>
+              
+              <div class="mt-4">
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Selecciona la temática del reto:</label>
+                <select id="ai-genre-select" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-blue-500">
+                  <option value="Roles y Responsabilidades de Scrum">Roles, Límites y Autogestión</option>
+                  <option value="Eventos de Scrum y reglas de Timebox">Eventos y gestión de Sprints</option>
+                  <option value="Artefactos de Scrum y Definición de Hecho (DoD)">Artefactos y Calidad (DoD)</option>
+                  <option value="Escalado de Scrum con múltiples equipos">Scrum a Escala (Un Solo Producto)</option>
+                  <option value="Antipatrones y malas prácticas de Scrum">Antipatrones y Errores habituales</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <button onclick="generatePracticeQuestion()" class="w-full px-4 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-lg shadow-indigo-900/40 flex items-center justify-center gap-2">
+                <span>Generar Caso Práctico ✨</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Pantalla de Carga -->
+        <div id="ai-loading-container" class="hidden mt-8 p-8 bg-slate-900/40 rounded-2xl border border-slate-800 flex flex-col items-center justify-center text-center space-y-3">
+          <div class="relative w-12 h-12">
+            <div class="absolute inset-0 rounded-full border-4 border-blue-500/20 border-t-blue-500 animate-spin"></div>
+          </div>
+          <p class="text-sm text-slate-300 font-semibold animate-pulse">Procesando consulta y analizando reglas de la Guía de Scrum 2020...</p>
+        </div>
+
+        <!-- Resultados de Análisis -->
+        <div id="ai-analysis-result" class="hidden mt-8 p-6 bg-slate-900/60 rounded-2xl border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+              <span>🧠 Deconstrucción de Pregunta Realizada</span>
+            </h3>
+            <button onclick="document.getElementById('ai-analysis-result').classList.add('hidden')" class="text-xs text-slate-500 hover:text-slate-300">Cerrar</button>
+          </div>
+          <div id="ai-analysis-markdown" class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-3 overflow-x-auto">
+            <!-- Contenido dinámico -->
+          </div>
+        </div>
+
+        <!-- Caso Práctico Generado Interactivo -->
+        <div id="ai-quiz-result" class="hidden mt-8 p-6 bg-slate-900/60 rounded-2xl border border-slate-800 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-sm font-bold text-indigo-400 uppercase tracking-wider">
+              📝 Reto Práctico Generado
+            </h3>
+            <span class="text-xs text-slate-500 font-semibold">Responde para autoevaluarte</span>
+          </div>
+
+          <div class="space-y-4">
+            <h4 id="ai-quiz-question" class="text-sm sm:text-base font-bold text-white leading-relaxed">
+              ¿Pregunta aquí?
+            </h4>
+
+            <div id="ai-quiz-options" class="grid grid-cols-1 gap-3">
+              <!-- Opciones dinámicas -->
+            </div>
+          </div>
+
+          <div id="ai-quiz-feedback" class="hidden p-4 rounded-xl border leading-relaxed text-xs sm:text-sm">
+            <!-- Feedback dinámico -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>Material de estudio independiente para la preparación del examen de certificación Scrum.org PSM I®.</p>
+      <p class="mt-1">Scrum.org y PSM I son marcas registradas de sus respectivos propietarios. Funciona 100% offline.</p>
+    </div>
+  </footer>
+
+  <!-- Base de Datos & Lógica Completa JS -->
+  <script>
+    const tipsData = [
+      {
+        id: 1,
+        pregunta: "¿Quién gestiona el progreso del trabajo durante un Sprint?",
+        tip: "Los <strong>Developers</strong> gestionan su propio trabajo y monitorean el progreso hacia el Sprint Goal. <br><span class='text-red-400 text-sm'>❌ No el Scrum Master. No el Product Owner.</span>",
+        categoria: "roles",
+        etiquetas: ["Developers", "Progreso", "Sprint"]
+      },
+      {
+        id: 2,
+        pregunta: "¿Debe estar presente el Scrum Master en el Daily Scrum?",
+        tip: "El Daily Scrum es un evento de los Developers para los Developers.<br><span class='text-emerald-400 text-sm'>✅ El Scrum Master puede asistir, pero no es obligatorio.</span>",
+        categoria: "eventos",
+        etiquetas: ["Daily Scrum", "Scrum Master"]
+      },
+      {
+        id: 3,
+        pregunta: "Propósito de un Sprint",
+        tip: "Cada Sprint debe producir un Incremento que sea:<br><span class='text-emerald-400 font-bold'>✅ Valioso y Utilizable.</span><br><span class='text-slate-400 text-sm'>❌ No se trata simplemente de completar tareas.</span>",
+        categoria: "reglas",
+        etiquetas: ["Sprint", "Incremento"]
+      },
+      {
+        id: 4,
+        pregunta: "Tamaño del Scrum Team",
+        tip: "Memoriza la regla oficial:<br><span class='text-emerald-400 font-bold'>Scrum Team = 10 personas o menos</span>.<br>Incluye siempre al Product Owner, Scrum Master y Developers.",
+        categoria: "roles",
+        etiquetas: ["Equipo", "Tamaño"]
+      },
+      {
+        id: 5,
+        pregunta: "¿Debe liberarse a producción cada Sprint?",
+        tip: "<span class='text-amber-400 font-semibold'>\"Done\" no significa \"Released\".</span><br>Un Incremento debe estar listo para liberarse, pero <span class='text-emerald-400'>no es obligatorio liberarlo</span> en cada Sprint.",
+        categoria: "artefactos",
+        etiquetas: ["Incremento", "Done", "Release"]
+      },
+      {
+        id: 6,
+        pregunta: "¿Scrum elimina la complejidad?",
+        tip: "Cuando aparezca esta opción:<br><span class='text-red-400 font-semibold'>❌ Scrum elimina la complejidad (FALSO)</span>.<br>Scrum únicamente <span class='text-emerald-400 font-semibold'>✅ Hace visible la complejidad</span>.",
+        categoria: "reglas",
+        etiquetas: ["Complejidad", "Marco"]
+      },
+      {
+        id: 7,
+        pregunta: "¿Cuándo puede cancelarse un Sprint?",
+        tip: "Regla estricta:<br><span class='text-emerald-400 font-bold'>Solo el Product Owner</span> puede cancelar un Sprint, y únicamente cuando el <span class='text-amber-400'>Sprint Goal se vuelve obsoleto</span>.",
+        categoria: "reglas",
+        etiquetas: ["Cancelación", "Sprint", "Product Owner"]
+      },
+      {
+        id: 8,
+        pregunta: "Múltiples equipos Scrum para un solo producto",
+        tip: "Regla de oro absoluta de escalado:<br><span class='text-emerald-400 font-bold'>Un Producto = Un Product Owner = Un Product Backlog</span>.",
+        categoria: "roles",
+        etiquetas: ["Escalado", "Product Backlog", "Product Owner"]
+      },
+      {
+        id: 9,
+        pregunta: "Cambiar la terminología de Scrum",
+        tip: "Los nombres en Scrum tienen significado. Cambiar la terminología puede:<br>1. Ocultar el cambio real.<br>2. Reducir los beneficios.<br>3. Generar confusión.",
+        categoria: "reglas",
+        etiquetas: ["Terminología", "Adopción"]
+      },
+      {
+        id: 10,
+        pregunta: "Reemplazo de un Developer en el equipo",
+        tip: "Scrum valora los equipos estables.<br>Cambiar integrantes <span class='text-emerald-400'>✅ Es posible</span>, pero ten presente que <span class='text-red-400'>⚠️ reduce la productividad de forma temporal</span>.",
+        categoria: "roles",
+        etiquetas: ["Developers", "Productividad"]
+      },
+      {
+        id: 11,
+        pregunta: "¿Quién tiene la última palabra sobre el Product Backlog?",
+        tip: "El <span class='text-emerald-400 font-bold'>Product Owner</span> es una sola persona y tiene la <span class='text-emerald-400'>autoridad final</span> sobre el contenido, orden y prioridad del Product Backlog.",
+        categoria: "roles",
+        etiquetas: ["Product Owner", "Product Backlog"]
+      },
+      {
+        id: 12,
+        pregunta: "Mejora de procesos después de la Retrospective",
+        tip: "Antes era obligatorio meter al menos una mejora en el Sprint Backlog. <span class='text-red-400 font-semibold'>Guía 2020 lo eliminó</span>.<br>Respuesta correcta: <span class='text-emerald-400 font-bold'>FALSO</span>. Se puede hacer, pero no es obligatorio.",
+        categoria: "eventos",
+        etiquetas: ["Retrospective", "Guía 2020", "Sprint Backlog"]
+      },
+      {
+        id: 13,
+        pregunta: "Daily Scrum y rol del Scrum Master",
+        tip: "El Scrum Master:<br><span class='text-emerald-400'>✅ Puede facilitar la participación</span> y <span class='text-emerald-400'>ayuda a mantener el timebox</span>.<br><span class='text-red-400'>❌ No dirige la reunión ni exige responder las 3 preguntas clásicas</span>.",
+        categoria: "eventos",
+        etiquetas: ["Daily Scrum", "Scrum Master", "Facilitación"]
+      },
+      {
+        id: 14,
+        pregunta: "Sprint Planning: Duración",
+        tip: "El timebox oficial máximo es de <span class='text-emerald-400 font-bold'>8 horas para un Sprint de 1 mes</span>. (Es proporcionalmente menor para Sprints más cortos).",
+        categoria: "eventos",
+        etiquetas: ["Sprint Planning", "Timebox"]
+      },
+      {
+        id: 15,
+        pregunta: "Ajustar trabajo durante el Sprint",
+        tip: "Si surge nueva información, el <span class='text-emerald-400 font-semibold'>Product Owner y los Developers renegocian el alcance</span>.<br><span class='text-red-400 font-semibold'>⚠️ El Sprint Goal debe mantenerse estable.</span>",
+        categoria: "reglas",
+        etiquetas: ["Sprint Backlog", "Sprint Goal", "Alcance"]
+      },
+      {
+        id: 16,
+        pregunta: "¿Qué describe mejor a Scrum?",
+        tip: "Opción correcta: <span class='text-emerald-400 font-bold'>✅ Framework (Marco de trabajo)</span>.<br>Opciones incorrectas habituales: Metodología, Proceso definido, Mejores prácticas.",
+        categoria: "reglas",
+        etiquetas: ["Framework", "Definición"]
+      },
+      {
+        id: 17,
+        pregunta: "¿Qué significa el concepto Timebox?",
+        tip: "Timebox significa estrictamente una <span class='text-emerald-400 font-bold'>Duración MÁXIMA</span> permitida para un evento, no una duración fija ni mínima.",
+        categoria: "eventos",
+        etiquetas: ["Timebox", "Eventos"]
+      },
+      {
+        id: 18,
+        pregunta: "Preguntas que mencionan Valor, Negocio y Lanzamientos",
+        tip: "Si ves términos como: <em>Valor, Negocio, Prioridades, Lanzamientos o Trade-offs de negocio</em>; la respuesta correcta se asocia casi siempre al rol de <span class='text-emerald-400 font-bold'>Product Owner</span>.",
+        categoria: "roles",
+        etiquetas: ["Product Owner", "Valor", "Negocio"]
+      },
+      {
+        id: 19,
+        pregunta: "Duración del Daily Scrum",
+        tip: "El Daily Scrum dura <span class='text-emerald-400 font-bold'>siempre 15 minutos</span>, independientemente de la duración total de tu Sprint.",
+        categoria: "eventos",
+        etiquetas: ["Daily Scrum", "Timebox"]
+      },
+      {
+        id: 20,
+        pregunta: "Habilidades necesarias de los Developers",
+        tip: "Los Developers deben ser <span class='text-emerald-400 font-bold'>Cross-functional (multifuncionales)</span>. Deben poseer de manera colectiva todas las habilidades para crear un Incremento terminado.",
+        categoria: "roles",
+        etiquetas: ["Developers", "Multifuncional"]
+      },
+      {
+        id: 21,
+        pregunta: "Sprint Review: Duración",
+        tip: "El timebox máximo oficial es de <span class='text-emerald-400 font-bold'>4 horas para un Sprint de 1 mes</span>. Menor duración para sprints más cortos.",
+        categoria: "eventos",
+        etiquetas: ["Sprint Review", "Timebox"]
+      },
+      {
+        id: 22,
+        pregunta: "¿El Sprint Backlog puede cambiar?",
+        tip: "Regla de oro:<br><span class='text-emerald-400 font-semibold'>Sprint Goal = Totalmente Estable.</span><br><span class='text-amber-400 font-semibold'>Sprint Backlog = Flexible.</span> Se puede adaptar conforme se aprende.",
+        categoria: "artefactos",
+        etiquetas: ["Sprint Backlog", "Sprint Goal"]
+      },
+      {
+        id: 23,
+        pregunta: "Concepto de Scrum Team Autogestionado",
+        tip: "Señales incorrectas en el examen:<br><span class='text-red-400'>❌ Silos, fases analista-desarrollador-tester, o sub-equipos</span>.<br>Scrum busca <span class='text-emerald-400 font-bold'>equipos multifuncionales y autogestionados</span>.",
+        categoria: "roles",
+        etiquetas: ["Autogestión", "Multifuncional"]
+      },
+      {
+        id: 24,
+        pregunta: "¿Existe el rol de Project Manager en Scrum?",
+        tip: "No existe tal rol. Los únicos tres roles válidos son: <strong>PO, SM y Developers</strong>. Descarta cualquier opción que asigne tareas a un \"Project Manager\".",
+        categoria: "roles",
+        etiquetas: ["Roles", "Project Manager"]
+      },
+      {
+        id: 25,
+        pregunta: "¿Qué pasa si un CEO pide un trabajo urgente directamente?",
+        tip: "El CEO <span class='text-red-400 font-semibold'>no puede ordenar directamente</span> a los Developers.<br>La respuesta correcta es que <span class='text-emerald-400 font-semibold'>el Scrum Team en conjunto evalúa la situación</span> a través del Product Owner.",
+        categoria: "roles",
+        etiquetas: ["Product Owner", "CEO", "Interrupciones"]
+      },
+      {
+        id: 26,
+        pregunta: "Propiedad de los elementos del Sprint Backlog",
+        tip: "<span class='text-emerald-400 font-bold'>No existe propiedad individual</span>.<br>Todos los elementos seleccionados pertenecen a los Developers de manera colectiva como equipo.",
+        categoria: "artefactos",
+        etiquetas: ["Sprint Backlog", "Colaboración"]
+      },
+      {
+        id: 27,
+        pregunta: "¿Qué debe hacerse durante el Primer Sprint?",
+        tip: "El objetivo es siempre <span class='text-emerald-400 font-bold'>crear un Incremento valioso y utilizable</span>.<br><span class='text-red-400'>❌ Es incorrecto intentar diseñar toda la arquitectura o planificar todo el proyecto</span>.",
+        categoria: "reglas",
+        etiquetas: ["Primer Sprint", "Incremento"]
+      },
+      {
+        id: 28,
+        pregunta: "Señales de un Equipo Scrum que funciona MAL",
+        tip: "Es mala práctica si:<br>1. Stakeholders usan el Daily Scrum para controlar el progreso.<br>2. El equipo se organiza en silos funcionales.<br>3. Se invita a externos para indicar cómo trabajar.",
+        categoria: "roles",
+        etiquetas: ["Malas Prácticas", "Antipatrones"]
+      },
+      {
+        id: 29,
+        pregunta: "¿Cuál es el rol de la Gerencia/Dirección (Management) en Scrum?",
+        tip: "La Dirección no tiene rol dentro del Scrum Team, pero debe <span class='text-emerald-400 font-semibold'>brindar soporte al PO con perspectivas comerciales</span> y <span class='text-emerald-400 font-semibold'>apoyar al SM</span> para promover el empirismo y la autogestión.",
+        categoria: "roles",
+        etiquetas: ["Dirección", "Management", "Soporte"]
+      },
+      {
+        id: 30,
+        pregunta: "Definición de Hecho (DoD) con Múltiples Equipos Scrum",
+        tip: "Si múltiples equipos Scrum trabajan en un mismo producto, <span class='text-emerald-400 font-bold'>deben definir y compartir conjuntamente la misma DoD</span> para asegurar un Incremento integrado.",
+        categoria: "artefactos",
+        etiquetas: ["Definition of Done", "DoD", "Múltiples Equipos"]
+      },
+      {
+        id: 31,
+        pregunta: "¿Cuándo un desarrollador se adueña de un elemento en el Backlog?",
+        tip: "<span class='text-red-400 font-bold'>❌ ¡NUNCA!</span> El Sprint Backlog es propiedad colectiva de los Developers. Ningún integrante tiene pertenencia exclusiva.",
+        categoria: "artefactos",
+        etiquetas: ["Sprint Backlog", "Colaboración", "Developers"]
+      },
+      {
+        id: 32,
+        pregunta: "¿Cuál es la responsabilidad principal del Product Owner?",
+        tip: "El Product Owner es responsable de <span class='text-emerald-400 font-bold'>maximizar el valor del producto</span> resultante del trabajo del Scrum Team.",
+        categoria: "roles",
+        etiquetas: ["Product Owner", "Valor", "Maximizar"]
+      },
+      {
+        id: 33,
+        pregunta: "¿Cuál es el propósito formal de los Eventos en Scrum?",
+        tip: "Cada evento de Scrum (salvo el Sprint como contenedor) es una <span class='text-emerald-400 font-bold'>oportunidad formal para inspeccionar y adaptar</span> los artefactos y progresos.",
+        categoria: "eventos",
+        etiquetas: ["Eventos", "Inspección", "Adaptación"]
+      },
+      {
+        id: 34,
+        pregunta: "¿Cuándo se formula de forma completa el Sprint Backlog?",
+        tip: "<span class='text-red-400 font-bold'>❌ Nunca de forma fija.</span> Es un plan dinámico que <span class='text-emerald-400 font-semibold'>se modifica a lo largo del Sprint</span> a medida que los desarrolladores descubren más información.",
+        categoria: "artefactos",
+        etiquetas: ["Sprint Backlog", "Flexibilidad", "Planificación"]
+      },
+      {
+        id: 35,
+        pregunta: "¿Cómo puedo empezar a usar Scrum en mi equipo?",
+        tip: "Forma un equipo multifuncional (PO, SM y Developers), define las necesidades en el Product Backlog y arranca tu primer Sprint.<br><span class='text-emerald-400 font-bold'>¡Lo más importante es empezar!</span> Ejecutar Sprints te permite aprender, inspeccionar y adaptarte.",
+        categoria: "reglas",
+        etiquetas: ["Primer Sprint", "Adopción", "Empirismo"]
+      },
+      {
+        id: 36,
+        pregunta: "¿Qué hacemos cuando Scrum no funciona en nuestra organización?",
+        tip: "Scrum no es una varita mágica; <span class='text-amber-400 font-semibold'>es un espejo que expone los problemas</span>. Las disfunciones suelen provenir de fallas de aplicación (omisión de eventos, falta de apoyo, roles vagos). Analiza la complejidad y revisa la Guía de Scrum.",
+        categoria: "reglas",
+        etiquetas: ["Disfunciones", "Empirismo", "Organización"]
+      },
+      {
+        id: 37,
+        pregunta: "¿Scrum se utiliza únicamente para el desarrollo de software?",
+        tip: "<span class='text-emerald-400 font-bold'>NO.</span> Scrum se utiliza en diversos ámbitos (marketing, educación, investigación, etc.) y en cualquier entorno donde exista un trabajo complejo.",
+        categoria: "reglas",
+        etiquetas: ["Ámbito", "Trabajo Complejo"]
+      },
+      {
+        id: 38,
+        pregunta: "¿Qué hacer si el Product Owner no está disponible de forma constante?",
+        tip: "La ausencia constante obstaculiza el avance del equipo. Se debe comprender la razón y, si requiere mayor capacidad, <span class='text-emerald-400 font-semibold'>el PO puede intentar delegar algunas de sus responsabilidades</span> (manteniendo la rendición de cuentas).",
+        categoria: "roles",
+        etiquetas: ["Product Owner", "Disponibilidad", "Delegación"]
+      },
+      {
+        id: 39,
+        pregunta: "¿Qué sucede si no terminamos todo el trabajo previsto para el Sprint?",
+        tip: "El objetivo principal es <span class='text-emerald-400 font-bold'>alcanzar el Objetivo del Sprint (Sprint Goal)</span>. Los elementos no finalizados vuelven al Product Backlog para que el PO los reordene, y el equipo analiza las causas en la Retrospectiva.",
+        categoria: "artefactos",
+        etiquetas: ["Sprint Backlog", "Incompleto", "Retrospective"]
+      },
+      {
+        id: 40,
+        pregunta: "¿Podemos extender el Sprint para terminar nuestro trabajo?",
+        tip: "<span class='text-red-400 font-bold'>❌ NUNCA.</span> Extender un Sprint interrumpe el ritmo, oculta problemas subyacentes y desvía la atención. Déjalo terminar en su Timebox, devuelve lo incompleto al Product Backlog y aprende en la Retrospectiva.",
+        categoria: "eventos",
+        etiquetas: ["Timebox", "Sprint", "Ritmo"]
+      },
+      {
+        id: 41,
+        pregunta: "¿Necesitamos herramientas especiales para implementar Scrum?",
+        tip: "<span class='text-emerald-400 font-bold'>NO.</span> Scrum se basa en valores, responsabilidades, eventos y artefactos. Aplica el principio: <em>'Individuos e interacciones por encima de procesos y herramientas'</em>. Evita herramientas que generen burocracia.",
+        categoria: "reglas",
+        etiquetas: ["Herramientas", "Agile", "Colaboración"]
+      },
+      {
+        id: 42,
+        pregunta: "¿Qué hacemos si terminamos todo el trabajo antes de que termine el Sprint?",
+        tip: "Aprovecha el tiempo restante para:<br>1. Mejores técnicas, refactorización o automatización.<br>2. Refinar y estimar elementos para el próximo Sprint.<br>3. Incorporar trabajo adicional en colaboración con el PO.",
+        categoria: "reglas",
+        etiquetas: ["Tiempo Extra", "Refinamiento", "Calidad"]
+      },
+      {
+        id: 43,
+        pregunta: "¿Se pueden añadir nuevas tareas al Sprint Backlog a mitad del Sprint?",
+        tip: "<span class='text-emerald-400 font-bold'>✅ SÍ.</span> Solo los Developers añaden o modifican tareas en el Sprint Backlog durante el Sprint a medida que obtienen más información sobre el trabajo.",
+        categoria: "artefactos",
+        etiquetas: ["Sprint Backlog", "Developers", "Flexibilidad"]
+      },
+      {
+        id: 44,
+        pregunta: "¿Puede haber varios Objetivos de Sprint para un mismo Sprint?",
+        tip: "<span class='text-red-400 font-bold'>❌ NO.</span> Solo debe haber <span class='text-emerald-400 font-bold'>un único Objetivo de Sprint por Sprint</span>. Tener múltiples objetivos diluye el enfoque y la alineación del equipo.",
+        categoria: "reglas",
+        etiquetas: ["Sprint Goal", "Enfoque", "Unicidad"]
+      }
+    ];
+
+    // Banco de Retos Locales Offline para el Generador
+    const localQuizPool = {
+      "Roles y Responsabilidades de Scrum": [
+        {
+          question: "El CEO de la compañía asiste al Daily Scrum y le indica directamente a dos desarrolladores que cambien la prioridad del trabajo del día por un requerimiento de un cliente VIP. ¿Cómo debe proceder el equipo?",
+          options: [
+            "Aceptar de inmediato la solicitud porque proviene del CEO de la empresa.",
+            "El Scrum Master debe intervenir recordando que el Daily Scrum es un evento exclusivo para los Developers y remitir la conversación del CEO con el Product Owner.",
+            "Los desarrolladores agregan la tarea al Sprint Backlog y cancelan el Sprint.",
+            "Modificar el Sprint Goal para complacer al cliente VIP sin avisar al Product Owner."
+          ],
+          correctIndex: 1,
+          explanation: "<strong>Regla Scrum 2020:</strong> El Daily Scrum es un evento de y para los Developers. Nadie externo (ni el CEO ni gerentes) puede alterar el plan diario. El Product Owner es la única persona con autoridad sobre prioridades del producto."
+        },
+        {
+          question: "¿Quién es el responsable de gestionar el progreso del trabajo durante el Sprint para alcanzar el Sprint Goal?",
+          options: [
+            "El Scrum Master mediante la revisión de gráficos Burndown.",
+            "El Project Manager asignando tareas individuales diariamente.",
+            "Exclusivamente los Developers.",
+            "El Product Owner junto al equipo directivo."
+          ],
+          correctIndex: 2,
+          explanation: "<strong>Regla Scrum 2020:</strong> Los Developers son los únicos responsables de gestionar su trabajo y evaluar el progreso durante el Sprint hacia el Sprint Goal."
+        }
+      ],
+      "Eventos de Scrum y reglas de Timebox": [
+        {
+          question: "A falta de 2 días para que finalice un Sprint de 4 semanas, los Developers se dan cuenta de que no lograrán completar 3 historias de usuario. ¿Qué debe hacerse?",
+          options: [
+            "Extender el Sprint 3 días adicionales para culminar todo el trabajo comprometido.",
+            "Respetar el timebox del Sprint; el trabajo no terminado vuelve al Product Backlog y se evalúa en la Retrospectiva.",
+            "Cancelar inmediatamente el Sprint.",
+            "Pedir al Scrum Master que apruebe horas extras obligatorias."
+          ],
+          correctIndex: 1,
+          explanation: "<strong>Regla de Timebox:</strong> La duración de un Sprint es fija e inviolable. Si el trabajo no se completa según la Definition of Done, vuelve al Product Backlog y no se presenta en la Review como Incremento."
+        }
+      ],
+      "Artefactos de Scrum y Definición de Hecho (DoD)": [
+        {
+          question: "Tres equipos Scrum independientes están trabajando simultáneamente en el desarrollo del mismo producto bancario. ¿Cómo debe manejarse la Definición de Hecho (DoD)?",
+          options: [
+            "Cada equipo crea su propia DoD de forma aislada sin importar las inconsistencias.",
+            "Todos los equipos deben definir y compartir conjuntamente una misma Definición de Hecho mínima.",
+            "El Scrum Master redacta unilateralmente la DoD para todos los equipos.",
+            "No se necesita DoD cuando hay más de 2 equipos."
+          ],
+          correctIndex: 1,
+          explanation: "<strong>Regla de Escalado:</strong> Si múltiples equipos trabajan en el mismo producto, deben acordar y compartir una DoD común para garantizar que los incrementos producidos sean mutuamente compatibles."
+        }
+      ],
+      "Escalado de Scrum con múltiples equipos": [
+        {
+          question: "Una empresa decide asignar 4 equipos Scrum para crear una nueva plataforma e-commerce. ¿Cuántos Product Backlogs y Product Owners deben existir?",
+          options: [
+            "4 Product Backlogs y 4 Product Owners independientes.",
+            "1 solo Product Backlog y 1 solo Product Owner.",
+            "4 Product Backlogs pero coordinados por 1 Scrum Master.",
+            "1 Product Backlog gestionado por un comité de 4 Product Owners."
+          ],
+          correctIndex: 1,
+          explanation: "<strong>Regla de Escalado PSM I:</strong> 1 Producto = 1 Product Owner = 1 Product Backlog. No importa cuántos equipos trabajen en el producto."
+        }
+      ],
+      "Antipatrones y malas prácticas de Scrum": [
+        {
+          question: "¿Cuál de las siguientes situaciones representa un antipatrón o mala práctica grave en Scrum?",
+          options: [
+            "Los Developers adaptan el Sprint Backlog a mitad de Sprint al descubrir más detalles técnicos.",
+            "Un Developer asigna elementos del Sprint Backlog a un miembro exclusivo con propiedad permanente.",
+            "El Product Owner reordena el Product Backlog antes del Sprint Planning.",
+            "El equipo decide no realizar lanzamientos en todos los Sprints."
+          ],
+          correctIndex: 1,
+          explanation: "<strong>Antipatrón:</strong> El Sprint Backlog es de propiedad colectiva de los Developers. Ningún integrante es dueño individual ni exclusivo de una tarea."
+        }
+      ]
+    };
+
+    let activeCategory = 'all';
+    let currentFlashcardIndex = 0;
+    let isFlipped = false;
+
+    // Renderizar Cards de Tips
+    function renderTips() {
+      const grid = document.getElementById('tips-grid');
+      const searchQuery = document.getElementById('tip-search').value.toLowerCase();
+      grid.innerHTML = '';
+
+      const filtered = tipsData.filter(item => {
+        const matchesCategory = activeCategory === 'all' || item.categoria === activeCategory;
+        const matchesSearch = item.pregunta.toLowerCase().includes(searchQuery) || 
+                              item.tip.toLowerCase().includes(searchQuery) ||
+                              item.etiquetas.some(tag => tag.toLowerCase().includes(searchQuery));
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-12 text-slate-500">
+            <svg class="w-12 h-12 mx-auto mb-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="text-sm font-semibold">No se encontraron tips con esos términos de búsqueda</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const isCritical = item.id === 12 || item.id === 13 || item.id >= 29;
+        const cardClass = isCritical 
+          ? 'bg-slate-900 border-red-500/30 hover:border-red-500/60 shadow-lg shadow-red-950/20' 
+          : 'bg-slate-900/40 border-slate-800 hover:border-slate-700 shadow-md';
+
+        const tagBadges = item.etiquetas.map(tag => 
+          `<span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300">#${tag}</span>`
+        ).join(' ');
+
+        const card = document.createElement('div');
+        card.className = `p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${cardClass}`;
+        card.innerHTML = `
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wide ${isCritical ? 'bg-red-500/20 text-red-400' : 'bg-blue-500/10 text-blue-400'}">
+                ${isCritical ? '🚨 Clave / Examen' : 'Pregunta #' + item.id}
+              </span>
+              <div class="flex space-x-1">${tagBadges}</div>
+            </div>
+            <h3 class="text-sm font-bold text-white tracking-tight leading-snug">${item.pregunta}</h3>
+            <div class="text-xs text-slate-300 border-t border-slate-800/60 pt-3 leading-relaxed">
+              ${item.tip}
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/50 flex justify-end">
+            <button onclick="triggerAIAnalysis('${item.pregunta.replace(/'/g, "\\'")}')" class="text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1">
+              <span>Analizar con AI ✨</span>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function setCategoryFilter(category) {
+      activeCategory = category;
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white', 'bg-slate-900', 'text-slate-400');
+        btn.classList.add('bg-slate-900', 'text-slate-400');
+      });
+      event.target.classList.remove('bg-slate-900', 'text-slate-400');
+      event.target.classList.add('bg-blue-600', 'text-white');
+
+      renderTips();
+    }
+
+    function filterTips() {
+      renderTips();
+    }
+
+    function switchView(view) {
+      const btnInfografia = document.getElementById('btn-infografia');
+      const btnFlashcards = document.getElementById('btn-flashcards');
+      const btnAsistente = document.getElementById('btn-asistente');
+      
+      const viewInfografia = document.getElementById('view-infografia');
+      const viewFlashcards = document.getElementById('view-flashcards');
+      const viewAsistente = document.getElementById('view-asistente');
+
+      [viewInfografia, viewFlashcards, viewAsistente].forEach(el => el.classList.add('hidden'));
+      [btnInfografia, btnFlashcards, btnAsistente].forEach(el => {
+        el.className = "px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all text-slate-400 hover:text-slate-200 whitespace-nowrap";
+      });
+
+      if (view === 'infografia') {
+        viewInfografia.classList.remove('hidden');
+        btnInfografia.className = "px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all bg-blue-600 text-white shadow-md shadow-blue-900/30 whitespace-nowrap";
+      } else if (view === 'flashcards') {
+        viewFlashcards.classList.remove('hidden');
+        btnFlashcards.className = "px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all bg-blue-600 text-white shadow-md shadow-blue-900/30 whitespace-nowrap";
+        resetFlashcard();
+      } else if (view === 'asistente') {
+        viewAsistente.classList.remove('hidden');
+        btnAsistente.className = "px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all bg-blue-600 text-white shadow-md shadow-blue-900/30 whitespace-nowrap flex items-center gap-1";
+      }
+    }
+
+    function updateFlashcard() {
+      const item = tipsData[currentFlashcardIndex];
+      document.getElementById('flashcard-question').innerHTML = item.pregunta;
+      document.getElementById('flashcard-answer').innerHTML = item.tip;
+      document.getElementById('flashcard-index').textContent = `${currentFlashcardIndex + 1} / ${tipsData.length}`;
+    }
+
+    function flipFlashcard() {
+      const inner = document.getElementById('flashcard-inner');
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        inner.classList.add('rotate-y-180');
+      } else {
+        inner.classList.remove('rotate-y-180');
+      }
+    }
+
+    function resetFlashcard() {
+      isFlipped = false;
+      document.getElementById('flashcard-inner').classList.remove('rotate-y-180');
+      updateFlashcard();
+    }
+
+    function nextFlashcard(event) {
+      event.stopPropagation();
+      currentFlashcardIndex = (currentFlashcardIndex + 1) % tipsData.length;
+      resetFlashcard();
+    }
+
+    function prevFlashcard(event) {
+      event.stopPropagation();
+      currentFlashcardIndex = (currentFlashcardIndex - 1 + tipsData.length) % tipsData.length;
+      resetFlashcard();
+    }
+
+    function shuffleFlashcards(event) {
+      event.stopPropagation();
+      for (let i = tipsData.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [tipsData[i], tipsData[j]] = [tipsData[j], tipsData[i]];
+      }
+      currentFlashcardIndex = 0;
+      resetFlashcard();
+    }
+
+    function saveApiKey() {
+      const apiKeyInput = document.getElementById('api-key-input');
+      const val = apiKeyInput.value.trim();
+      if (val) {
+        localStorage.setItem('gemini_api_key', val);
+      } else {
+        localStorage.removeItem('gemini_api_key');
+      }
+    }
+
+    // ANALIZADOR DE PREGUNTAS (MOTOR DUAL: OFFLINE LOCAL O ONLINE SI HAY KEY)
+    async function analyzeQuestionWithAI() {
+      const input = document.getElementById('ai-question-input').value.trim();
+      const loading = document.getElementById('ai-loading-container');
+      const resultDiv = document.getElementById('ai-analysis-result');
+      const quizDiv = document.getElementById('ai-quiz-result');
+      
+      if (!input) return;
+
+      loading.classList.remove('hidden');
+      resultDiv.classList.add('hidden');
+      quizDiv.classList.add('hidden');
+
+      const apiKey = localStorage.getItem('gemini_api_key') || document.getElementById('api-key-input').value.trim();
+
+      // Si hay API key disponible, intentamos usar la API
+      if (apiKey) {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+          const systemPrompt = "Eres un instructor máster de certificación PSM I y experto absoluto en Scrum. Analizarás la pregunta en español.";
+          const userPrompt = `Analiza detalladamente la siguiente pregunta de examen: "${input}". 
+          Estructura:
+          1. **Respuesta Correcta Directa**
+          2. **Deconstrucción de Distractores**
+          3. **Fundamento Oficial según la Guía Scrum 2020**`;
+
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: userPrompt }] }],
+              systemInstruction: { parts: [{ text: systemPrompt }] }
+            })
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (text) {
+              document.getElementById('ai-analysis-markdown').innerHTML = parseMarkdown(text);
+              resultDiv.classList.remove('hidden');
+              loading.classList.add('hidden');
+              return;
+            }
+          }
+        } catch (e) {
+          // Si falla la API en línea, cae suavemente al motor offline sin mostrar mensaje de error
+        }
+      }
+
+      // MOTOR DE INFERENCIA OFFLINE LOCAL
+      setTimeout(() => {
+        const analysis = generateLocalAnalysis(input);
+        document.getElementById('ai-analysis-markdown').innerHTML = parseMarkdown(analysis);
+        resultDiv.classList.remove('hidden');
+        loading.classList.add('hidden');
+      }, 500);
+    }
+
+    // Motor de análisis local inteligente
+    function generateLocalAnalysis(questionText) {
+      const text = questionText.toLowerCase();
+      
+      // Encontrar coincidencias en la base de 44 tips
+      let matches = tipsData.filter(item => {
+        return text.includes(item.pregunta.toLowerCase()) || 
+               item.etiquetas.some(t => text.includes(t.toLowerCase()));
+      });
+
+      let response = `1. **Respuesta Correcta Directa**: \n`;
+
+      if (text.includes("gerencia") || text.includes("management") || text.includes("dirección")) {
+        response += `La Gerencia/Dirección NO supervisa ni impone trabajo al Scrum Team durante el Sprint. Su función es externa: brindar apoyo y métricas de mercado al Product Owner y promover el entorno empírico para el Scrum Master.\n\n`;
+        response += `2. **Deconstrucción de Distractores**: \n`;
+        response += `• *Distractor típico*: "La gerencia asigna las tareas al equipo" (Falso: los Developers son autogestionados).\n`;
+        response += `• *Distractor típico*: "El Scrum Master reporta el progreso a la gerencia diariamente" (Falso: Scrum no usa reporte jerárquico tradicional).\n\n`;
+        response += `3. **Fundamento Oficial según la Guía Scrum 2020**: \n`;
+        response += `El equipo Scrum es autónomo y multifuncional. La dirección respalda la organización pero no ejerce microgestión en las iteraciones.`;
+      } 
+      else if (text.includes("dod") || text.includes("definición de hecho") || text.includes("múltiples") || text.includes("varios equipos")) {
+        response += `Si múltiples equipos Scrum colaboran en el mismo producto, DEBEN acordar y compartir una Definición de Hecho (DoD) común y unificada.\n\n`;
+        response += `2. **Deconstrucción de Distractores**: \n`;
+        response += `• *Distractor típico*: "Cada equipo crea su propia DoD de forma aislada" (Falso: rompería la integración del producto).\n`;
+        response += `• *Distractor típico*: "El Scrum Master escribe la DoD" (Falso: la DoD es responsabilidad técnica del equipo).\n\n`;
+        response += `3. **Fundamento Oficial según la Guía Scrum 2020**: \n`;
+        response += `La Definición de Hecho garantiza la transparencia y la calidad del Incremento utilizable. 1 Producto = 1 DoD Compartida.`;
+      }
+      else if (text.includes("quien") || text.includes("quién") || text.includes("responsable") || text.includes("progres")) {
+        response += `Los **Developers** son los únicos responsables de inspeccionar y gestionar su progreso diario hacia el Sprint Goal.\n\n`;
+        response += `2. **Deconstrucción de Distractores**: \n`;
+        response += `• Opciones que señalan al Scrum Master como jefe de proyecto (Falso).\n`;
+        response += `• Opciones que otorgan el control del Sprint al Product Owner (Falso: el PO gestiona el Product Backlog, no el trabajo intra-sprint).\n\n`;
+        response += `3. **Fundamento Oficial según la Guía Scrum 2020**: \n`;
+        response += `Los Developers son multifuncionales y autogestionados.`;
+      }
+      else {
+        // Respuesta genérica de alta calidad basada en los tips encontrados
+        const matchedTip = matches.length > 0 ? matches[0] : tipsData[0];
+        response += `Analizado según las reglas del PSM I: **${matchedTip.pregunta}**.\n\n`;
+        response += `2. **Deconstrucción de Distractores**: \n`;
+        response += `En el examen PSM I, descarta cualquier opción que proponga romper el Timebox, agregar roles como "Project Manager" o alterar el Sprint Goal a mitad de iteración.\n\n`;
+        response += `3. **Fundamento Oficial según la Guía Scrum 2020**: \n`;
+        response += `${matchedTip.tip.replace(/<[^>]*>?/gm, '')}`;
+      }
+
+      return response;
+    }
+
+    // GENERADOR DE CASOS PRÁCTICOS (OFFLINE LOCAL O ONLINE SI HAY KEY)
+    async function generatePracticeQuestion() {
+      const selectedGenre = document.getElementById('ai-genre-select').value;
+      const loading = document.getElementById('ai-loading-container');
+      const resultDiv = document.getElementById('ai-analysis-result');
+      const quizDiv = document.getElementById('ai-quiz-result');
+
+      loading.classList.remove('hidden');
+      resultDiv.classList.add('hidden');
+      quizDiv.classList.add('hidden');
+
+      const apiKey = localStorage.getItem('gemini_api_key') || document.getElementById('api-key-input').value.trim();
+
+      if (apiKey) {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+          const responseSchema = {
+            type: "OBJECT",
+            properties: {
+              question: { type: "STRING" },
+              options: { type: "ARRAY", items: { type: "STRING" } },
+              correctIndex: { type: "INTEGER" },
+              explanation: { type: "STRING" }
+            },
+            required: ["question", "options", "correctIndex", "explanation"]
+          };
+
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: `Genera una pregunta de examen PSM I sobre: ${selectedGenre}` }] }],
+              generationConfig: { responseMimeType: "application/json", responseSchema: responseSchema }
+            })
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            const jsonText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (jsonText) {
+              renderQuiz(JSON.parse(jsonText));
+              loading.classList.add('hidden');
+              return;
+            }
+          }
+        } catch (e) {
+          // Caída limpia a local
+        }
+      }
+
+      // MOTOR DE RETOS LOCALES OFFLINE
+      setTimeout(() => {
+        const pool = localQuizPool[selectedGenre] || localQuizPool["Roles y Responsabilidades de Scrum"];
+        const randomIndex = Math.floor(Math.random() * pool.length);
+        renderQuiz(pool[randomIndex]);
+        loading.classList.add('hidden');
+      }, 400);
+    }
+
+    function renderQuiz(data) {
+      const quizDiv = document.getElementById('ai-quiz-result');
+      const questionEl = document.getElementById('ai-quiz-question');
+      const optionsContainer = document.getElementById('ai-quiz-options');
+      const feedbackEl = document.getElementById('ai-quiz-feedback');
+
+      feedbackEl.classList.add('hidden');
+      questionEl.textContent = data.question;
+      optionsContainer.innerHTML = '';
+
+      data.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-3.5 bg-slate-900/80 hover:bg-slate-800 rounded-xl border border-slate-800 hover:border-slate-700 transition-all text-xs sm:text-sm text-slate-300 font-medium flex items-center justify-between";
+        btn.innerHTML = `
+          <span>${opt}</span>
+          <span class="w-5 h-5 rounded-full border border-slate-700 flex items-center justify-center text-[10px] uppercase font-bold text-slate-500">
+            ${String.fromCharCode(65 + idx)}
+          </span>
+        `;
+        btn.onclick = () => checkQuizAnswer(idx, data.correctIndex, data.explanation, btn);
+        optionsContainer.appendChild(btn);
+      });
+
+      quizDiv.classList.remove('hidden');
+    }
+
+    function checkQuizAnswer(selectedIdx, correctIdx, explanation, clickedButton) {
+      const buttons = document.querySelectorAll('#ai-quiz-options button');
+      const feedbackEl = document.getElementById('ai-quiz-feedback');
+
+      buttons.forEach((btn, idx) => {
+        btn.onclick = null; 
+        if (idx === correctIdx) {
+          btn.className = "w-full text-left p-3.5 bg-emerald-950/40 border-emerald-500/40 rounded-xl border transition-all text-xs sm:text-sm text-emerald-300 font-bold flex items-center justify-between";
+        } else {
+          btn.className = "w-full text-left p-3.5 bg-slate-950 opacity-40 border-slate-900 rounded-xl border transition-all text-xs sm:text-sm text-slate-500 flex items-center justify-between";
+        }
+      });
+
+      if (selectedIdx !== correctIdx) {
+        clickedButton.className = "w-full text-left p-3.5 bg-red-950/40 border-red-500/40 rounded-xl border transition-all text-xs sm:text-sm text-red-300 font-bold flex items-center justify-between";
+      }
+
+      feedbackEl.className = `p-4 rounded-xl border leading-relaxed text-xs sm:text-sm ${selectedIdx === correctIdx ? 'bg-emerald-950/20 border-emerald-500/20 text-emerald-300' : 'bg-red-950/20 border-red-500/20 text-red-300'}`;
+      feedbackEl.innerHTML = `
+        <div class="flex items-center space-x-2 mb-2">
+          <span class="text-xs font-extrabold uppercase px-2.5 py-0.5 rounded ${selectedIdx === correctIdx ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}">
+            ${selectedIdx === correctIdx ? '✓ ¡Respuesta Correcta!' : '✗ Opción Incorrecta'}
+          </span>
+        </div>
+        <div>${parseMarkdown(explanation)}</div>
+      `;
+      feedbackEl.classList.remove('hidden');
+    }
+
+    function triggerAIAnalysis(pregunta) {
+      document.getElementById('ai-question-input').value = pregunta;
+      switchView('asistente');
+      analyzeQuestionWithAI();
+    }
+
+    function clearAnalyzer() {
+      document.getElementById('ai-question-input').value = '';
+      document.getElementById('ai-analysis-result').classList.add('hidden');
+    }
+
+    function parseMarkdown(text) {
+      let html = text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/`([^`]+)`/g, '<code class="bg-slate-800 text-pink-400 px-1 py-0.5 rounded text-xs">$1</code>')
+        .replace(/\n/g, '<br>');
+      return html;
+    }
+
+    window.onload = function() {
+      renderTips();
+      updateFlashcard();
+      
+      const savedKey = localStorage.getItem('gemini_api_key');
+      if (savedKey) {
+        const keyInput = document.getElementById('api-key-input');
+        if (keyInput) keyInput.value = savedKey;
+      }
+    };
+  </script>
+
+</body>
+</html>
